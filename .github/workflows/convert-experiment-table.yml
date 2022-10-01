@@ -13,6 +13,8 @@ env:
   INPUT_FILE: 'babs/docs/experiment_table.xlsx'
   OUTPUT_FILE: 'babs/docs/experiment_table.csv'
   OUTPUT_FORMAT: 'csv'
+  FOOBAR: undef
+  TABLE_FILE: undef
 
 # define the work to be done
 jobs:
