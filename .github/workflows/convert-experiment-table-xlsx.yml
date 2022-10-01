@@ -14,9 +14,6 @@ on:
         type: string
         default: 'csv'
 
-# set up environment variables
-env:
-
 # define the work to be done
 jobs:
   convert-experiment-table-xlsx:
