@@ -33,7 +33,7 @@ jobs:
         with:
           files: ${{ inputs.target-file }}
 
-      - name: run conversion docker
+      - name: run conversion using docker
         id: convert-target-file
         uses: docker://christopherbarrington/convert-experiment-table-xlsx:2022.10.01
         if: steps.target-file-existence.outputs.files_exists == 'true'
