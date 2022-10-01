@@ -16,7 +16,7 @@ on:
     outputs:
       output-file-root:
         description: 'root path for output file(s)'
-        value: 'none'
+        value: 'set by converter'
 
 # define the work to be done
 jobs:
