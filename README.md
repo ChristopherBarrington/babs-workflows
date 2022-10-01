@@ -18,7 +18,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  run_remote_workflow:
-    name: run remote experiment table conversion workflow
-    uses: ChristopherBarrington/babs-workflows/.github/workflows/convert-experiment-table.yml@main
+  run-remote-workflow:
+    uses: ChristopherBarrington/babs-workflows/.github/workflows/convert-experiment-table-xlsx.yml@main
+    with:
+      target-file: 'babs/docs/experiment_table.xlsx'
 ```
