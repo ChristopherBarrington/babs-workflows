@@ -1,8 +1,0 @@
-#! /bin/bash
-
-echo '----------- docker -----------'
-echo 'command line arguments: ' $@
-echo 'workdir: ' `pwd` ; ls -lh
-echo '---------- xlsx2csv ----------'
-xlsx2csv $@ && \
-echo '---------- finished ----------'

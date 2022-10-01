@@ -1,0 +1,29 @@
+#! /bin/bash
+
+echo '----------- docker -----------'
+echo 'command line arguments:' $@
+echo 'workdir:' `pwd` ; ls -lh
+
+echo '------- converter args -------'
+TARGET_FILE=$1
+OUTPUT_FILE_ROOT=${TARGET_FILE%.*}
+
+shift 1
+OUTPUT_FORMATS=$@
+
+echo 'target file:' ${TARGET_FILE}
+echo 'output file formats:' ${OUTPUT_FILE_ROOT}
+echo 'output formats:' ${OUTPUT_FORMATS}
+
+echo '---------- converter ----------'
+for OUTPUT_FORMAT in ${OUTPUT_FORMATS[@]}; do
+	if [[ ${OUTPUT_FORMAT} == 'csv' ]]; then
+		echo '------------- csv -------------'
+		echo xlsx2csv --sheet 1 --delimiter ',' ${TARGET_FILE} ${OUTPUT_FILE_ROOT}.csv
+	elif [[ ${OUTPUT_FORMAT} == 'tsv' ]]; then
+		echo '------------- tsv -------------'
+		echo xlsx2csv --sheet 1 --delimiter 'tab' ${TARGET_FILE} ${OUTPUT_FILE_ROOT}.tsv
+	fi
+done
+
+echo '---------- finished ----------'
