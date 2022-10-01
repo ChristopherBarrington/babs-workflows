@@ -1,9 +1,10 @@
 #! /bin/bash
 
-IMAGE_NAME=xlsx2csv
-IMAGE_TAG=`date "+%Y.%m.%d"`
+DOCKER_HUB_USER=christopherbarrington
+REPO_NAME=xlsx2csv
+TAG=`date "+%Y.%m.%d"`
 
-BUILD_PATH=`dirname "$0"`
+IMAGE_NAME=${DOCKER_HUB_USER}/${REPO_NAME}
 
-docker build --tag ${IMAGE_NAME}:${IMAGE_TAG} ${BUILD_PATH} && \
-docker image tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest
+docker build --tag ${IMAGE_NAME}:${TAG} .
+# docker image tag ${IMAGE_NAME}:${TAG} ${IMAGE_NAME}:latest
