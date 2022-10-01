@@ -1,4 +1,4 @@
-name: Convert an experiment table xlsx to csv
+name: Convert an experiment table xlsx
 
 # when a commit includes a experiment_table.xlsx file
 on:
