@@ -1,4 +1,4 @@
-name: Convert experiment_table.xlsx
+name: Convert an experiment table xlsx to csv
 
 # when a commit includes a experiment_table.xlsx file
 on:
@@ -44,5 +44,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add --all
-          git commit -m "babs-o-matic converted ${{ INPUT_FILE }} to ${{ env.OUTPUT_FORMAT }}"
+          git commit -m "babs-o-matic converted ${{ env.INPUT_FILE }} to ${{ env.OUTPUT_FORMAT }}"
           git push origin HEAD:main
