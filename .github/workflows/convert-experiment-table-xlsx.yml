@@ -12,7 +12,7 @@ on:
       output-formats:
         required: false
         type: string
-        default: 'csv'
+        default: 'csv tsv'
 
 # define the work to be done
 jobs:
@@ -44,10 +44,8 @@ jobs:
         id: commit-all-changes
         if: steps.convert-target-file.outcome == 'success'
         run: |
-          git branch --all
-          git remote --verbose
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add --all
-          git commit -m "babs-o-matic converted ${{ inputs.target-file }} to ${{ env.OUTPUT_FORMAT }}"
+          git add ${{ inputs.target-file }}*
+          git commit -m "babs-o-matic converted ${{ inputs.target-file }}"
           git push origin HEAD:main
