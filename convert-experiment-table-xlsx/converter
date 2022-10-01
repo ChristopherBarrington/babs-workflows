@@ -26,4 +26,7 @@ for OUTPUT_FORMAT in ${OUTPUT_FORMATS[@]}; do
 	fi
 done
 
+echo '------ printing outputs ------'
+echo "::set-output name=output-file-root::${OUTPUT_FILE_ROOT}"
+
 echo '---------- finished ----------'
