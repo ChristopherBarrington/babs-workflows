@@ -21,6 +21,9 @@ jobs:
   convert-experiment-table:
     runs-on: ubuntu-latest
     steps:
+      - name: init
+        run: |
+          echo ${{env.FOOBAR}} ${{env.TABLE_FILE}}
       - name: checkout the repo
         uses: actions/checkout@v3
       - name: check experiment table exists
