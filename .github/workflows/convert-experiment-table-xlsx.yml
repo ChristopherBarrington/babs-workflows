@@ -13,6 +13,10 @@ on:
         required: false
         type: string
         default: 'csv tsv'
+    outputs:
+      output-file-root:
+        description: 'root path for output file(s)'
+
 
 # define the work to be done
 jobs:
@@ -46,6 +50,6 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add ${{ inputs.target-file }}*
+          git add ${{ steps.convert-target-file.outputs.output-file-root }}.*
           git commit -m "babs-o-matic converted ${{ inputs.target-file }}"
           git push origin HEAD:main
