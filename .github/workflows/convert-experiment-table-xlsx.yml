@@ -12,7 +12,7 @@ on:
       output-formats:
         required: false
         type: string
-        default: 'csv tsv'
+        default: 'csv'
     outputs:
       output-file-root:
         description: 'root path for output file(s)'
