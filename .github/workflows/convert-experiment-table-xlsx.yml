@@ -1,0 +1,56 @@
+name: Convert an experiment table xlsx
+
+# define when the workflow should run
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      target-file:
+        required: true
+        type: string
+        default: 'babs/docs/experiment_table.xlsx'
+      output-formats:
+        required: false
+        type: string
+        default: 'csv'
+
+# set up environment variables
+env:
+
+# define the work to be done
+jobs:
+  convert-experiment-table-xlsx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+
+      - name: check experiment table exists
+        id: target-file-existence
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ${{ inputs.target-file }}
+
+      - name: run conversion docker
+        id: convert-target-file
+        uses: docker://christopherbarrington/convert-experiment-table-xlsx:2022.10.01
+        if: steps.target-file-existence.outputs.files_exists == 'true'
+        with:
+          args: ${{ inputs.target-file }} ${{ inputs.output-formats }}
+
+      - name: list files in expected output directory
+        if: steps.convert-target-file.outcome == 'failure'
+        run: ls babs/docs
+
+      - name: commit converted experiment table
+        id: commit-all-changes
+        if: steps.convert-target-file.outcome == 'success'
+        run: |
+          git branch --all
+          git remote --verbose
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add --all
+          git commit -m "babs-o-matic converted ${{ inputs.target-file }} to ${{ env.OUTPUT_FORMAT }}"
+          git push origin HEAD:main
