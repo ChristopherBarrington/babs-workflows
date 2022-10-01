@@ -37,7 +37,7 @@ jobs:
           args: ${{ inputs.target-file }} ${{ inputs.output-formats }}
 
       - name: list files in expected output directory
-        if: steps.convert-target-file.outcome == 'failure'
+        # if: steps.convert-target-file.outcome == 'failure'
         run: ls babs/docs
 
       - name: commit converted experiment table
