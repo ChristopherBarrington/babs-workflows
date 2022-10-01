@@ -17,7 +17,6 @@ on:
       output-file-root:
         description: 'root path for output file(s)'
 
-
 # define the work to be done
 jobs:
   convert-experiment-table-xlsx:
