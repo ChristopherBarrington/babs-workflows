@@ -34,3 +34,7 @@ For workflows that use a docker image, the image should be created (somewhere) a
 This workflow uses an image on docker hub to convert an `experiment_table.xlsx` file to comma- and/or tab-delimted text files that can be viewed in GitHub directly.
 
 The `converter` is the entrypoint of the container and takes multiple arguments: the first is the path to the `xlsx` file and the remaining are output formats (in this case, only `csv` and `tsv` can be used).
+
+# convert-proposal-docx
+
+coming soon. maybe.
