@@ -16,6 +16,7 @@ on:
     outputs:
       output-file-root:
         description: 'root path for output file(s)'
+        value: 'none'
 
 # define the work to be done
 jobs:
