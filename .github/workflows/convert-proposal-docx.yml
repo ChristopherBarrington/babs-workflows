@@ -43,6 +43,7 @@ jobs:
       - name: commit converted proposal
         if: steps.convert-target-file.outcome == 'success'
         run: |
+          date >> babs/docs/proposal.md
           ls -l
           ls -l babs/docs
           git status
