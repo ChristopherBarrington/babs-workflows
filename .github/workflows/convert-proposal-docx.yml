@@ -43,9 +43,7 @@ jobs:
       - name: commit converted proposal
         if: steps.convert-target-file.outcome == 'success'
         run: |
-          git status
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add ${OUTPUT_FILE}
-          git commit --message "proposal.docx converted"
+          git commit --all --message "proposal.docx converted"
           git push origin HEAD:main
