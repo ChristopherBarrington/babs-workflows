@@ -8,14 +8,11 @@ on:
         required: true
         type: string
         default: 'babs/docs/proposal.docx'
-      output-formats:
-        required: false
-        type: string
-        default: 'gfm'
-    outputs:
-      output-file-root:
-        description: 'root path for output file(s)'
-        value: 'set by converter'
+
+# set up environment variables
+env:
+  OUTPUT_FILE: 'babs/docs/proposal.md'
+  OUTPUT_FORMAT: 'gfm'
 
 # define the work to be done
 jobs:
@@ -37,7 +34,7 @@ jobs:
         uses: docker://pandoc/core:2.9
         if: steps.target-file-existence.outputs.files_exists == 'true'
         with:
-          args: "--to ${{ env.OUTPUT_FORMAT }} --output ${{ env.OUTPUT_FILE }} ${{ env.INPUT_FILE }}" # gets appended to pandoc command
+          args: "--to ${{ env.OUTPUT_FORMAT }} --output ${{ env.OUTPUT_FILE }} ${{ inputs.target-file }}" # gets appended to pandoc command
 
       - name: list files in expected output directory
         if: steps.convert-target-file.outcome == 'failure'
