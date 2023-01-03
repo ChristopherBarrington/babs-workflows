@@ -34,7 +34,7 @@ jobs:
         uses: docker://pandoc/core:2.9
         if: steps.target-file-existence.outputs.files_exists == 'true'
         with:
-          args: "--to ${{ env.OUTPUT_FORMAT }} --output ${{ env.OUTPUT_FILE }} ${{ inputs.target-file }}" # gets appended to pandoc command
+          args: "--to ${{ env.OUTPUT_FORMAT }} --output ${{ env.OUTPUT_FILE }} --extract-media=babs/docs/proposal_media ${{ inputs.target-file }}" # gets appended to pandoc command
 
       - name: list files in expected output directory
         if: steps.convert-target-file.outcome == 'failure'
