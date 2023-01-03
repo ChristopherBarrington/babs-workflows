@@ -50,6 +50,6 @@ jobs:
           git status
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add babs/docs/media
-          git commit --all --message "proposal.docx converted"
+          git add --all
+          git commit --message "proposal.docx converted"
           git push origin HEAD:main
