@@ -44,6 +44,7 @@ jobs:
         if: steps.convert-target-file.outcome == 'success'
         run: |
           date >> babs/docs/proposal.md
+          mv media babs/docs
           ls -l
           ls -l babs/docs
           ls -l babs/docs/media
