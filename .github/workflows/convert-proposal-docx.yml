@@ -45,7 +45,7 @@ jobs:
           ls -l babs/docs
           ls -l babs/docs/media
           mv babs/docs/media babs/docs/proposal_media
-          sed --in-place 's|babs/docs/media/|proposal_media/|g'
+          sed --in-place 's|babs/docs/media/|proposal_media/|g' ${{ env.OUTPUT_FILE }}
 
       - name: list files in expected output directory
         if: steps.convert-target-file.outcome == 'failure'
