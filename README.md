@@ -43,7 +43,7 @@ jobs:
 
 This workflow uses `christopherbarrington/convert-proposal-docx` on docker hub to convert a `proposal.docx` file to a GitHub-flavoured markdown that can be read directly in GitHub.
 
-The `converter` is the entrypoint of the container and takes precicesly three arguments:
+The `converter` is the entrypoint of the container and takes precisely three arguments:
 
 1. the path to the proposal Word document, typically `babs/docs/proposal.docx` but can be configured per project repository
 1. the output format, should be `gfm`, is provided to `pandoc --to`
