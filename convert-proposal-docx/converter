@@ -1,10 +1,10 @@
 #! /bin/sh
 
-echo '----------- docker -----------'
+echo '----- docker --------------------'
 echo 'command line arguments:' $@
 echo 'workdir:' `pwd` ; ls -lh
 
-echo '------- converter args -------'
+echo '----- converter args ------------'
 TARGET_FILE=$1
 OUTPUT_FORMAT=$2
 OUTPUT_FILE=$3
@@ -16,7 +16,7 @@ echo 'output file:' ${OUTPUT_FILE}
 echo 'output path:' ${OUTPUT_PATH}
 echo 'output format:' ${OUTPUT_FORMAT}
 
-echo '---------- converter ----------'
+echo '----- converter -----------------'
 pandoc --to ${OUTPUT_FORMAT} --output ${OUTPUT_FILE} --extract-media ${OUTPUT_PATH} ${TARGET_FILE}
 
 if [[ -d ${OUTPUT_PATH}/media ]]; then
@@ -25,7 +25,7 @@ if [[ -d ${OUTPUT_PATH}/media ]]; then
 		rm ${OUTPUT_FILE}.sedbackup
 fi
 
-echo '------ printing outputs ------'
-# echo "::set-output name=output-file-root::${OUTPUT_FILE_ROOT}"
+echo '----- printing outputs ----------'
+# echo "::set-output name=output-tag-name::output-tag-value"
 
-echo '---------- finished ----------'
+echo '----- finished ------------------'
