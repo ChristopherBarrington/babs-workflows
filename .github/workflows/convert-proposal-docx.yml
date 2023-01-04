@@ -31,7 +31,7 @@ jobs:
 
       - name: run conversion using docker
         id: convert-target-file
-        uses: docker://christopherbarrington/convert-proposal-docx:2023.01.03
+        uses: docker://christopherbarrington/convert-proposal-docx:2023.01.04
         if: steps.target-file-existence.outputs.files_exists == 'true'
         with:
           args: ${{ inputs.target-file }} ${{ env.OUTPUT_FORMAT }} ${{ env.OUTPUT_FILE }}
