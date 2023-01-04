@@ -1,0 +1,50 @@
+name: Convert proposal.docx
+
+# define when the workflow should run
+on:
+  workflow_call:
+    inputs:
+      target-file:
+        required: true
+        type: string
+        default: 'babs/docs/proposal.docx'
+
+# set up environment variables
+env:
+  OUTPUT_FILE: 'babs/docs/proposal.md'
+  OUTPUT_FORMAT: 'gfm'
+
+# define the work to be done
+jobs:
+  convert-proposal-document:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+
+      - name: check proposal exists
+        id: target-file-existence
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ${{ inputs.target-file }}
+
+      - name: run conversion using docker
+        id: convert-target-file
+        uses: docker://christopherbarrington/convert-proposal-docx:2023.01.04
+        if: steps.target-file-existence.outputs.files_exists == 'true'
+        with:
+          args: ${{ inputs.target-file }} ${{ env.OUTPUT_FORMAT }} ${{ env.OUTPUT_FILE }}
+
+      - name: list files in expected output directory
+        if: steps.convert-target-file.outcome == 'failure'
+        run: ls `dirname ${{ env.OUTPUT_FILE }}`
+
+      - name: commit converted proposal
+        if: steps.convert-target-file.outcome == 'success'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add --all
+          git commit --message "proposal.docx converted"
+          git push origin HEAD:main

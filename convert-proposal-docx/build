@@ -1,0 +1,10 @@
+#! /bin/bash
+
+DOCKER_HUB_USER=christopherbarrington
+REPO_NAME=$(basename `pwd`)
+TAG=`date "+%Y.%m.%d"`
+
+IMAGE_NAME=${DOCKER_HUB_USER}/${REPO_NAME}
+
+docker build --tag ${IMAGE_NAME}:${TAG} .
+# docker image tag ${IMAGE_NAME}:${TAG} ${IMAGE_NAME}:latest
