@@ -10,6 +10,13 @@ Each workflow that can be used should have a (similarly named) directory in the 
 
 For workflows that use a docker image, the image should be created (somewhere) and pushed to docker hub from which they will be downloaded when the action runs. The directory for the action should contain everything to make the docker image and optionally push the image. Generally, the steps required to make (and push) the image should be contained in the `build` shell script and run, for example, with `sh build`.
 
+```bash
+cd convert-experiment-table-xlsx
+sh build
+docker images
+# docker run --rm --mount source=<path>,destination=<path>,type=bind <repository>/<image> [arg] [arg] ... [arg]
+```
+
 # convert-experiment-table-xlsx
 
 This workflow uses `christopherbarrington/convert-experiment-table-xlsx` on docker hub to convert an `experiment_table.xlsx` file to comma- and/or tab-delimited text files that can be viewed in GitHub directly.
