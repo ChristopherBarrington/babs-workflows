@@ -34,7 +34,7 @@ on:
 
 jobs:
   run-remote-workflow:
-    uses: ChristopherBarrington/babs-workflows/.github/workflows/convert-experiment-table-xlsx.yml@2023.01.04
+    uses: ChristopherBarrington/babs-workflows/.github/workflows/convert-experiment-table-xlsx.yml@main
     with:
       target-file: 'babs/docs/experiment_table.xlsx'
 ```
@@ -60,7 +60,7 @@ on:
 
 jobs:
   run-remote-workflow:
-    uses: ChristopherBarrington/babs-workflows/.github/workflows/convert-proposal-docx.yml@2023.01.04
+    uses: ChristopherBarrington/babs-workflows/.github/workflows/convert-proposal-docx.yml@main
     with:
       target-file: 'babs/docs/proposal.docx'
 ```
